@@ -1,0 +1,34 @@
+pandas
+scikit-learn
+numpy
+seaborn
+flask
+mlflow===2.2.2
+dvc
+ipykernel
+dagshub
+xgboost
+lightgbm
+catboost
+statsmodels
+openpyxl
+ipykernel==6.29.5
+lightgbm
+fastapi[all]
+dvc[s3]
+python-dotenv
+nbconvert
+-e .
+
+#dev_requirements
+
+pytest==7.1.3
+tox==3.25.1
+black==22.8.0
+flake8==5.0.4
+mypy==0.971
+
+
+
+
+# pip install -r requirements_dev.txt --upgrade --no-cache-dir --prefer-binary
