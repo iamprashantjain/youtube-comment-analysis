@@ -1,0 +1,15 @@
+artifact_uri: file:///i:/CampusX_DS/campusx_dsmp2/11.%20Youtube%20comment%20analysis%20-%20MLOps/youtube-comment-analysis/experiment/mlruns/0/e1ca939f12934bed86aab5e2dfd56845/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e1ca939f12934bed86aab5e2dfd56845
+run_name: LogisticRegression_SMOTE_TFIDF_Trigrams
+run_uuid: e1ca939f12934bed86aab5e2dfd56845
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754914337610
+status: 1
+tags: []
+user_id: iampr

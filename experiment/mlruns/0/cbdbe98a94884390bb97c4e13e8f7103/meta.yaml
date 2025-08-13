@@ -1,0 +1,15 @@
+artifact_uri: file:///i:/CampusX_DS/campusx_dsmp2/11.%20Youtube%20comment%20analysis%20-%20MLOps/youtube-comment-analysis/experiment/mlruns/0/cbdbe98a94884390bb97c4e13e8f7103/artifacts
+end_time: 1754928400108
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cbdbe98a94884390bb97c4e13e8f7103
+run_name: KNN_SMOTE_TFIDF_Trigrams
+run_uuid: cbdbe98a94884390bb97c4e13e8f7103
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754928137437
+status: 3
+tags: []
+user_id: iampr
