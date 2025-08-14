@@ -40,3 +40,10 @@ stages:
     - src/components/model_evaluation.py
     outs:
     - experiment_info.json
+
+
+  register_model:
+    cmd: python src/components/register_model.py
+    deps:
+    - experiment_info.json
+    - src/components/register_model.py

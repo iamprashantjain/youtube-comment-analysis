@@ -157,8 +157,12 @@ class ModelEvaluation:
                 self._log_class_metrics(report, model)
                 self._log_model_artifacts(model, X_test, cm, [str(cls) for cls in model.classes_])
                 
+                #mlflow model path
+                artifact_uri = mlflow.get_artifact_uri()
+                model_path = f"{artifact_uri}/lightgbm_model"
+                
                 # 7. Save model info
-                save_model_info(run.info.run_id, "lgbm_model", 'experiment_info.json')
+                save_model_info(run.info.run_id, model_path, 'experiment_info.json')
                 
                 logging.info("Model evaluation completed successfully")
                 return report
