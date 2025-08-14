@@ -83,3 +83,11 @@ def register_and_promote_model(model_name: str, run_id: str, artifact_path: str,
     except Exception as e:
         logging.error(f"Failed to register and promote model to {promote_to}.")
         raise customexception(e, sys)
+    
+    
+
+#load model from model registry
+def load_model_from_registry(model_name, model_version):
+    model_uri = f"models:/{model_name}/{model_version}"
+    model = mlflow.pyfunc.load_model(model_uri)
+    return model
