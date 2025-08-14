@@ -1,0 +1,15 @@
+artifact_uri: file:///I:/CampusX_DS/campusx_dsmp2/11.%20Youtube%20comment%20analysis%20-%20MLOps/youtube-comment-analysis/mlruns/0/10a74acbba674722a0d46f6397fa87ca/artifacts
+end_time: 1754921591439
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 10a74acbba674722a0d46f6397fa87ca
+run_name: RandomForest_Best
+run_uuid: 10a74acbba674722a0d46f6397fa87ca
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754921550651
+status: 3
+tags: []
+user_id: iampr

@@ -1,0 +1,15 @@
+artifact_uri: file:///I:/CampusX_DS/campusx_dsmp2/11.%20Youtube%20comment%20analysis%20-%20MLOps/youtube-comment-analysis/mlruns/0/1c1379be518e477287d98f438d9cffbc/artifacts
+end_time: 1754920172625
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1c1379be518e477287d98f438d9cffbc
+run_name: NaiveBayes_Best
+run_uuid: 1c1379be518e477287d98f438d9cffbc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754920092787
+status: 3
+tags: []
+user_id: iampr

@@ -17,6 +17,7 @@ lightgbm
 fastapi[all]
 dvc[s3]
 python-dotenv
+nltk==3.8.1
 nbconvert
 -e .
 

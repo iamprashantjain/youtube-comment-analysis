@@ -1,0 +1,15 @@
+artifact_uri: file:///I:/CampusX_DS/campusx_dsmp2/11.%20Youtube%20comment%20analysis%20-%20MLOps/youtube-comment-analysis/mlruns/0/afc67c38c05a44ba8e81eadd3a04b0dd/artifacts
+end_time: 1754920498754
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: afc67c38c05a44ba8e81eadd3a04b0dd
+run_name: LogisticRegression_Best
+run_uuid: afc67c38c05a44ba8e81eadd3a04b0dd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754920436591
+status: 3
+tags: []
+user_id: iampr
