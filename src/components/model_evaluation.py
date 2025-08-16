@@ -33,14 +33,14 @@ class ModelEvaluation:
         
         mlflow_params = self.params["mlflow"]
         
-        # Get token from environment variable (required)
+        # Get token from environment variable
         token = os.environ.get("DAGSHUB_PAT")
-        
         if not token:
             raise ValueError("DAGSHUB_PAT environment variable not found")
-    
+
+        # Use environment token instead of mlflow_params['token']
         mlflow.set_tracking_uri(
-            f"https://{mlflow_params['username']}:{mlflow_params['token']}@dagshub.com/{mlflow_params['repo']}"
+            f"https://{mlflow_params['username']}:{token}@dagshub.com/{mlflow_params['repo']}"
         )
         mlflow.set_experiment(mlflow_params["experiment_name"])
 
@@ -174,8 +174,8 @@ class ModelEvaluation:
                 return report
 
         except Exception as e:
-            logging.error(f"Detailed error: {str(e)}")
-            logging.error("Full traceback:\n" + traceback.format_exc())
+            logging.info(f"Detailed error: {str(e)}")
+            logging.info("Full traceback:\n" + traceback.format_exc())
             raise customexception(e, sys)
 
 
@@ -186,5 +186,5 @@ if __name__ == "__main__":
         print("Evaluation Report:")
         print(pd.DataFrame(report).transpose())
     except Exception as e:
-        logging.critical(f"Application failed: {str(e)}")
+        logging.info(f"Application failed: {str(e)}")
         sys.exit(1)
