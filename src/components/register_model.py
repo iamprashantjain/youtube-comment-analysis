@@ -23,8 +23,14 @@ class ModelRegistration:
         with open("params.yaml", "r") as f:
             mlflow_params = yaml.safe_load(f)["mlflow"]
         
+        # Get token from environment variable
+        token = os.environ.get("DAGSHUB_PAT")
+        if not token:
+            raise ValueError("DAGSHUB_PAT environment variable not found")
+
+        # Use environment token instead of mlflow_params['token']
         mlflow.set_tracking_uri(
-            f"https://{mlflow_params['username']}:{mlflow_params['token']}@dagshub.com/{mlflow_params['repo']}"
+            f"https://{mlflow_params['username']}:{token}@dagshub.com/{mlflow_params['repo']}"
         )
 
 
