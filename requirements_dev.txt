@@ -212,7 +212,7 @@ protobuf==4.25.8
 psutil==7.0.0
 pure_eval==0.2.3
 py==1.11.0
-pyarrow==17.0.0
+pyarrow
 pycodestyle==2.9.1
 pycparser==2.22
 pydantic==2.10.6
