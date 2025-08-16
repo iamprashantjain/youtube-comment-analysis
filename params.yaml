@@ -12,12 +12,12 @@ data_preprocessing:
 model_trainer:
   ngram_range: [1, 3]
   max_features: 10000
-  learning_rate: 0.09
-  max_depth: 20
-  n_estimators: 367
+  learning_rate: 0.088
+  max_depth: 15
+  n_estimators: 664
+
 
 mlflow:
   username: iamprashantjain
-  token: 7bed6b5be2021b1a4eaae221787bcb048ab2bcfd
   experiment_name: youtube-comment-analysis
   repo: iamprashantjain/youtube-comment-analysis.mlflow

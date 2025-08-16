@@ -32,6 +32,13 @@ class ModelEvaluation:
             self.params = yaml.safe_load(f)
         
         mlflow_params = self.params["mlflow"]
+        
+        # Get token from environment variable (required)
+        token = os.environ.get("DAGSHUB_PAT")
+        
+        if not token:
+            raise ValueError("DAGSHUB_PAT environment variable not found")
+    
         mlflow.set_tracking_uri(
             f"https://{mlflow_params['username']}:{mlflow_params['token']}@dagshub.com/{mlflow_params['repo']}"
         )
