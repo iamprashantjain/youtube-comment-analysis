@@ -1,6 +1,7 @@
 import sys
 import os
 import yaml
+import mlflow
 import mlflow.pyfunc
 import pytest
 from mlflow.tracking import MlflowClient
@@ -8,7 +9,8 @@ from src.logger.logging import logging
 from src.exception.exception import customexception
 import traceback
 
-def _setup_mlflow():
+def setup_mlflow():
+    """Setup MLflow tracking with Dagshub credentials."""
     with open("params.yaml", "r") as f:
         mlflow_params = yaml.safe_load(f)["mlflow"]
         
@@ -17,13 +19,16 @@ def _setup_mlflow():
     if not token:
         raise ValueError("DAGSHUB_PAT environment variable not found")
 
-    # Use environment token instead of mlflow_params['token']
-    mlflow.set_tracking_uri(f"https://{mlflow_params['username']}:{token}@dagshub.com/{mlflow_params['repo']}")
-        
-        
+    # Set tracking URI with token
+    tracking_uri = f"https://{mlflow_params['username']}:{token}@dagshub.com/{mlflow_params['repo']}"
+    mlflow.set_tracking_uri(tracking_uri)
+    return MlflowClient(tracking_uri=tracking_uri)
+
+
 @pytest.mark.parametrize("model_name, stage", [("youtube_chromeplugin_model", "staging"),])
 def test_load_latest_staging_model(model_name, stage):
-    client = MlflowClient()
+    # Ensure MLflow is configured
+    client = setup_mlflow()
     
     # Get the latest version in the specified stage
     latest_version_info = client.get_latest_versions(model_name, stages=[stage])
@@ -41,4 +46,4 @@ def test_load_latest_staging_model(model_name, stage):
         print(f"Model '{model_name}' version {latest_version} loaded successfully from '{stage}' stage.")
 
     except Exception as e:
-        pytest.fail(f"Model loading failed with error: {e}")
+        pytest.fail(f"Model loading failed with error: {traceback.format_exc()}")

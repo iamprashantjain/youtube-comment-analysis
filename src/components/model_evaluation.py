@@ -12,6 +12,7 @@ from src.logger.logging import logging
 from src.exception.exception import customexception
 from src.utils.utils import load_object, save_model_info
 import traceback
+from mlflow.models import infer_signature
 
 
 @dataclass
@@ -118,10 +119,12 @@ class ModelEvaluation:
         
         # Log model with signature
         input_example = X_test[:5]
+        
         signature = mlflow.models.infer_signature(
             input_example, 
             model.predict(input_example)
         )
+        
         mlflow.sklearn.log_model(
             model,
             "model",
