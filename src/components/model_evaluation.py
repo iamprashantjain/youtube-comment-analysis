@@ -190,4 +190,4 @@ if __name__ == "__main__":
         print(pd.DataFrame(report).transpose())
     except Exception as e:
         logging.info(f"Application failed: {str(e)}")
-        sys.exit(1)
+        raise customexception(e, sys)
