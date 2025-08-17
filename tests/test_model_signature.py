@@ -25,7 +25,7 @@ def setup_mlflow():
 
 
 @pytest.mark.parametrize("model_name, stage, vectorizer_path", [
-    ("youtube_chromeplugin_model", "staging", "tfidf_vectorizer.pkl"),
+    ("youtube_chromeplugin_model", "Staging", "tfidf_vectorizer.pkl"),
 ])
 def test_model_with_vectorizer(model_name, stage, vectorizer_path):
     client = setup_mlflow()
