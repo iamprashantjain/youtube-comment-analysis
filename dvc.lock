@@ -5,8 +5,8 @@ stages:
     deps:
     - path: params.yaml
       hash: md5
-      md5: 7be03c729cb28e65843a6e4ac27b469a
-      size: 583
+      md5: af18c7d96995f8eb41541e9d2796e817
+      size: 534
     - path: src/components/data_ingestion.py
       hash: md5
       md5: 71c6cc84be5f73bc8acefabb388ea994
@@ -25,12 +25,12 @@ stages:
       md5: 1bd422dd6d135bced1d6c64a3e84a45d
       size: 5571089
   data_preprocessing:
-    cmd: python src/components/data_preprocessing.py
+    cmd: "python -m nltk.downloader stopwords\npython src/components/data_preprocessing.py\n"
     deps:
     - path: params.yaml
       hash: md5
-      md5: 7be03c729cb28e65843a6e4ac27b469a
-      size: 583
+      md5: af18c7d96995f8eb41541e9d2796e817
+      size: 534
     - path: src/components/data_preprocessing.py
       hash: md5
       md5: 3fbeb81f1d9407afcdd56ee73c76c39c
@@ -49,8 +49,8 @@ stages:
     deps:
     - path: params.yaml
       hash: md5
-      md5: 7be03c729cb28e65843a6e4ac27b469a
-      size: 583
+      md5: af18c7d96995f8eb41541e9d2796e817
+      size: 534
     - path: src/components/model_trainer.py
       hash: md5
       md5: 7921c4c1e7c563d7dcd400bf27057e71
@@ -62,7 +62,7 @@ stages:
       size: 7333234
     - path: artifacts/model_trainer/tfidf_vectorizer.pkl
       hash: md5
-      md5: 703b4830498e18291e7087ce22a019b6
+      md5: 8bbf92212a0c69cb2d5da1e4beb3df98
       size: 18653329
   model_evaluation:
     cmd: python src/components/model_evaluation.py
@@ -81,25 +81,25 @@ stages:
       size: 7333234
     - path: artifacts/model_trainer/tfidf_vectorizer.pkl
       hash: md5
-      md5: 703b4830498e18291e7087ce22a019b6
+      md5: 8bbf92212a0c69cb2d5da1e4beb3df98
       size: 18653329
     - path: src/components/model_evaluation.py
       hash: md5
-      md5: 77ad204a597000a1669bdb13721469c8
-      size: 7027
+      md5: 29ebdb6133290be46665e1b182b13718
+      size: 7339
     outs:
     - path: experiment_info.json
       hash: md5
-      md5: da2cd8b78b1fcdb9ef265bd97905ca95
+      md5: 9dbd2772c382f4cc18c56784116488ca
       size: 91
   register_model:
     cmd: python src/components/register_model.py
     deps:
     - path: experiment_info.json
       hash: md5
-      md5: da2cd8b78b1fcdb9ef265bd97905ca95
+      md5: 9dbd2772c382f4cc18c56784116488ca
       size: 91
     - path: src/components/register_model.py
       hash: md5
-      md5: 7a3b9c65179abd257bff3a591013bc1f
-      size: 3895
+      md5: ca1cdc0582af4f92afa20992371f2401
+      size: 4129

@@ -45,6 +45,12 @@ jobs:
         dvc pull --force
         ls artifacts/data_ingestion/
 
+
+    - name: Install NLTK data
+      run: |
+        python -m nltk.downloader punkt stopwords wordnet
+
+
     - name: Run DVC pipeline
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
