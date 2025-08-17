@@ -92,7 +92,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
       run: |
-        pytest test/test_model_loading.py
+        pytest tests/test_model_loading.py
 
 
     - name: Install test dependencies
@@ -111,4 +111,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: us-east-1
       run: |
-        pytest scripts/test_model_signature.py
+        pytest tests/test_model_signature.py
