@@ -97,6 +97,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
       run: |
         pytest tests/test_model_loading.py
 
@@ -106,6 +107,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
       run: |
         pytest tests/test_model_signature.py
 
@@ -115,6 +117,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
       run: |
         pytest tests/test_model_performance.py
 
@@ -125,6 +128,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
       run: python src\components\promote_model.py
 
 
@@ -134,6 +138,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
       run: |
         nohup python flask_app/app.py
 
