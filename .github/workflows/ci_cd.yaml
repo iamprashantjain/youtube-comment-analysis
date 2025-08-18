@@ -132,10 +132,14 @@ jobs:
         AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
       run: |
-        nohup python flask_app/app.py
+        nohup python flask_app/app.py > flask.log 2>&1 &
+        echo "Started Flask app in background"
         sleep 5
-        curl --retry 5 --retry-connrefused --retry-delay 2 http://127.0.0.1:5000/ || exit 1
+        curl --retry 5 --retry-connrefused --retry-delay 2 http://127.0.0.1:5000/ || (cat flask.log && exit 1)
 
     - name: Run flask api test
       run: |
         pytest tests/test_flask_api.py
+
+    
+    
