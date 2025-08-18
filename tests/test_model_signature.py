@@ -25,14 +25,14 @@ def setup_mlflow():
 
 
 @pytest.mark.parametrize("model_name, stage, vectorizer_path", [
-    ("youtube_chromeplugin_model", "Staging", "tfidf_vectorizer.pkl"),
+    ("youtube_chromeplugin_model", "Staging", os.path.join("artifacts", "model_trainer", "tfidf_vectorizer.pkl")),
 ])
 def test_model_with_vectorizer(model_name, stage, vectorizer_path):
     client = setup_mlflow()
 
     try:
         # Load model directly by stage
-        model_uri = f"models:/{model_name}@{stage}"
+        model_uri = f"models:/{model_name}/{stage}"
         model = mlflow.pyfunc.load_model(model_uri)
 
         # Load vectorizer
