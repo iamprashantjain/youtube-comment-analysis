@@ -1,3 +1,4 @@
+import os
 import yaml
 import sys
 from src.logger.logging import logging
@@ -64,9 +65,16 @@ def load_model_and_vectorizer():
 
         # Configure MLflow tracking
         mlflow_params = params["mlflow"]
+        # Get token from environment variable
+        token = os.environ.get("DAGSHUB_PAT")
+        if not token:
+            raise ValueError("DAGSHUB_PAT environment variable not found")
+
+        # Use environment token instead of mlflow_params['token']
         mlflow.set_tracking_uri(
-            f"https://{mlflow_params['username']}:{mlflow_params['token']}@dagshub.com/{mlflow_params['repo']}"
+            f"https://{mlflow_params['username']}:{token}@dagshub.com/{mlflow_params['repo']}"
         )
+        
         logging.info(f"Configured MLflow tracking URI for {mlflow_params['repo']}")
 
         # Load model from MLflow registry
