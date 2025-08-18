@@ -140,6 +140,29 @@ jobs:
     - name: Run flask api test
       run: |
         pytest tests/test_flask_api.py
+    
+
+    - name: Login to AWS ECR
+      if: success()
+      run: |
+        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 739275446561.dkr.ecr.ap-south-1.amazonaws.com
 
     
+    - name: Build Docker image
+      if: success()
+      run: |
+        docker build -t prashant-mlops-ecr .
+
     
+    - name: Tag Docker image
+      if: success()
+      run: |
+        docker tag prashant-mlops-ecr:latest 739275446561.dkr.ecr.ap-south-1.amazonaws.com/prashant-mlops-ecr:latest
+
+    
+    - name: Push Docker image to AWS ECR
+      if: success()
+      run: |
+        docker push 739275446561.dkr.ecr.ap-south-1.amazonaws.com/prashant-mlops-ecr:latest
