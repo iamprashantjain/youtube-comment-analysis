@@ -129,7 +129,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
-      run: python src\components\promote_model.py
+      run: python src/components/promote_model.py
 
 
 
@@ -145,4 +145,4 @@ jobs:
 
     - name: run flask api test
       run: |
-        pytest tests\test_flask_api.py
+        pytest tests/test_flask_api.py
