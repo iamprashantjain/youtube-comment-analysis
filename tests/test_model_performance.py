@@ -11,6 +11,10 @@ from mlflow.tracking import MlflowClient
 from src.logger.logging import logging
 from src.exception.exception import customexception
 import traceback
+from pathlib import Path
+
+holdout_data_path = Path("artifacts") / "data_preprocessing" / "test_processed.csv"
+vectorizer_path   = Path("artifacts") / "model_trainer" / "tfidf_vectorizer.pkl"
 
 def setup_mlflow():
     """Setup MLflow tracking with Dagshub credentials."""
@@ -29,8 +33,12 @@ def setup_mlflow():
     return MlflowClient(tracking_uri=tracking_uri)
 
 
+
+
+
+
 @pytest.mark.parametrize("model_name, stage, holdout_data_path, vectorizer_path", [
-    ("youtube_chromeplugin_model", "staging", "artifacts\data_preprocessing\test_processed.csv", "artifacts\model_trainer\tfidf_vectorizer.pkl"),  # Replace with your actual paths
+    ("youtube_chromeplugin_model", "staging", holdout_data_path, vectorizer_path),  # Replace with your actual paths
 ])
 def test_model_performance(model_name, stage, holdout_data_path, vectorizer_path):
     try:

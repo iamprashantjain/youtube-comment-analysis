@@ -8,6 +8,8 @@ from mlflow.tracking import MlflowClient
 from pathlib import Path
 
 
+vectorizer_path   = Path("artifacts") / "model_trainer" / "tfidf_vectorizer.pkl"
+
 def setup_mlflow():
     """Setup MLflow tracking with Dagshub credentials."""
     with open("params.yaml", "r") as f:
@@ -26,7 +28,7 @@ def setup_mlflow():
 
 
 @pytest.mark.parametrize("model_name, stage, vectorizer_path", [
-    ("youtube_chromeplugin_model", "Staging", Path("artifacts") / "model_trainer" / "tfidf_vectorizer.pkl"),
+    ("youtube_chromeplugin_model", "Staging", vectorizer_path),
 ])
 def test_model_with_vectorizer(model_name, stage, vectorizer_path):
     client = setup_mlflow()
