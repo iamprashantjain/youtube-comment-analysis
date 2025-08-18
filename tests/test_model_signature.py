@@ -5,6 +5,7 @@ import pytest
 import pandas as pd
 import pickle
 from mlflow.tracking import MlflowClient
+from pathlib import Path
 
 
 def setup_mlflow():
@@ -25,7 +26,7 @@ def setup_mlflow():
 
 
 @pytest.mark.parametrize("model_name, stage, vectorizer_path", [
-    ("youtube_chromeplugin_model", "Staging", os.path.join("artifacts", "model_trainer", "tfidf_vectorizer.pkl")),
+    ("youtube_chromeplugin_model", "Staging", Path("artifacts") / "model_trainer" / "tfidf_vectorizer.pkl"),
 ])
 def test_model_with_vectorizer(model_name, stage, vectorizer_path):
     client = setup_mlflow()
