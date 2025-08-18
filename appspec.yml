@@ -5,10 +5,10 @@ files:
     destination: /home/ubuntu/app
 hooks:
   BeforeInstall:
-    - location: /home/ubuntu/app/deploy/scripts/install_dependencies.sh
+    - location: deploy/scripts/install_dependencies.sh
       timeout: 300
       runas: ubuntu
   ApplicationStart:
-    - location: /home/ubuntu/app/deploy/scripts/start_docker.sh
+    - location: deploy/scripts/start_docker.sh
       timeout: 300
-      runas: sudo
+      runas: ubuntu
