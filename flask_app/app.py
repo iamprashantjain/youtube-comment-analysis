@@ -65,6 +65,7 @@ def load_model_and_vectorizer():
 
         # Configure MLflow tracking
         mlflow_params = params["mlflow"]
+        
         # Get token from environment variable
         token = os.environ.get("DAGSHUB_PAT")
         if not token:
