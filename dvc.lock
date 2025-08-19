@@ -5,101 +5,101 @@ stages:
     deps:
     - path: params.yaml
       hash: md5
-      md5: af18c7d96995f8eb41541e9d2796e817
-      size: 534
+      md5: 7c4524a015210ebf3c6af28d8f465d65
+      size: 512
     - path: src/components/data_ingestion.py
       hash: md5
-      md5: 71c6cc84be5f73bc8acefabb388ea994
-      size: 3062
+      md5: 1870c6733e5cc35d0bee7e36515bf674
+      size: 2982
     outs:
     - path: artifacts/data_ingestion/raw.csv
       hash: md5
-      md5: efd4a4163c42b6ce5de884638fdd18f5
-      size: 6919677
+      md5: 2b49268f86e3e1d8ff4a15720620b284
+      size: 6882883
     - path: artifacts/data_ingestion/test.csv
       hash: md5
-      md5: ea97ba82a4a25627bf4ffb52572484ea
-      size: 1348612
+      md5: 295b88d81555e67a857db0337244e118
+      size: 1341252
     - path: artifacts/data_ingestion/train.csv
       hash: md5
-      md5: 1bd422dd6d135bced1d6c64a3e84a45d
-      size: 5571089
+      md5: 70faef66e6135c49f7f02db4a55e9fdd
+      size: 5541654
   data_preprocessing:
     cmd: "python -m nltk.downloader stopwords\npython src/components/data_preprocessing.py\n"
     deps:
     - path: params.yaml
       hash: md5
-      md5: af18c7d96995f8eb41541e9d2796e817
-      size: 534
+      md5: 7c4524a015210ebf3c6af28d8f465d65
+      size: 512
     - path: src/components/data_preprocessing.py
       hash: md5
-      md5: 3fbeb81f1d9407afcdd56ee73c76c39c
-      size: 3936
+      md5: 9ff37f1e3c8825c38a78a2744aa82a30
+      size: 3838
     outs:
     - path: artifacts/data_preprocessing/test_processed.csv
       hash: md5
-      md5: 2a8c99e71290434a9409d102ee6d7525
-      size: 999926
+      md5: 0b169085a1067e3f36ec119fcb4b52a2
+      size: 992128
     - path: artifacts/data_preprocessing/train_processed.csv
       hash: md5
-      md5: c6d2ddd22fc132bf14d7358566174d05
-      size: 4132096
+      md5: 2b740b35901b81fd5b05d6a6aa8146b9
+      size: 4100977
   model_trainer:
     cmd: python src/components/model_trainer.py
     deps:
     - path: params.yaml
       hash: md5
-      md5: af18c7d96995f8eb41541e9d2796e817
-      size: 534
+      md5: 7c4524a015210ebf3c6af28d8f465d65
+      size: 512
     - path: src/components/model_trainer.py
       hash: md5
-      md5: 7921c4c1e7c563d7dcd400bf27057e71
-      size: 4527
+      md5: f0ac9889156a81c7de7aaab463ba209e
+      size: 4417
     outs:
     - path: artifacts/model_trainer/lgbm_model.pkl
       hash: md5
-      md5: 4d3f22232679d06e6a40db39942aebf6
-      size: 7333234
+      md5: 6f18fba45399cea2c28f52f507a859c4
+      size: 7291324
     - path: artifacts/model_trainer/tfidf_vectorizer.pkl
       hash: md5
-      md5: 8bbf92212a0c69cb2d5da1e4beb3df98
-      size: 18653329
+      md5: 5b9b5f98f7d7f35b62e350c48037fe93
+      size: 384171
   model_evaluation:
     cmd: python src/components/model_evaluation.py
     deps:
     - path: artifacts/data_preprocessing/test_processed.csv
       hash: md5
-      md5: 2a8c99e71290434a9409d102ee6d7525
-      size: 999926
+      md5: 0b169085a1067e3f36ec119fcb4b52a2
+      size: 992128
     - path: artifacts/data_preprocessing/train_processed.csv
       hash: md5
-      md5: c6d2ddd22fc132bf14d7358566174d05
-      size: 4132096
+      md5: 2b740b35901b81fd5b05d6a6aa8146b9
+      size: 4100977
     - path: artifacts/model_trainer/lgbm_model.pkl
       hash: md5
-      md5: 4d3f22232679d06e6a40db39942aebf6
-      size: 7333234
+      md5: 6f18fba45399cea2c28f52f507a859c4
+      size: 7291324
     - path: artifacts/model_trainer/tfidf_vectorizer.pkl
       hash: md5
-      md5: 8bbf92212a0c69cb2d5da1e4beb3df98
-      size: 18653329
+      md5: 5b9b5f98f7d7f35b62e350c48037fe93
+      size: 384171
     - path: src/components/model_evaluation.py
       hash: md5
-      md5: 29ebdb6133290be46665e1b182b13718
-      size: 7339
+      md5: a37c8fc328e0ffdf09d6183a7cafd23f
+      size: 7165
     outs:
     - path: experiment_info.json
       hash: md5
-      md5: 9dbd2772c382f4cc18c56784116488ca
-      size: 91
+      md5: a629312c888ffbd31d7c7f6e5fcea9f8
+      size: 88
   register_model:
     cmd: python src/components/register_model.py
     deps:
     - path: experiment_info.json
       hash: md5
-      md5: 9dbd2772c382f4cc18c56784116488ca
-      size: 91
+      md5: a629312c888ffbd31d7c7f6e5fcea9f8
+      size: 88
     - path: src/components/register_model.py
       hash: md5
-      md5: ca1cdc0582af4f92afa20992371f2401
-      size: 4129
+      md5: 6255fc3c1649cda9a783f87c1408b345
+      size: 4018
