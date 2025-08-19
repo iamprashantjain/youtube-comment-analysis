@@ -153,19 +153,19 @@ jobs:
     - name: Build Docker image
       if: success()
       run: |
-        docker build -t prashant-mlops-ecr .
+        docker build -t test-mlops/yt-chrome-plugin .
 
     
     - name: Tag Docker image
       if: success()
       run: |
-        docker tag prashant-mlops-ecr:latest 739275446561.dkr.ecr.ap-south-1.amazonaws.com/prashant-mlops-ecr:latest
+        docker tag test-mlops/yt-chrome-plugin:latest 739275446561.dkr.ecr.ap-south-1.amazonaws.com/test-mlops/yt-chrome-plugin:latest
 
     
     - name: Push Docker image to AWS ECR
       if: success()
       run: |
-        docker push 739275446561.dkr.ecr.ap-south-1.amazonaws.com/prashant-mlops-ecr:latest
+        docker push 739275446561.dkr.ecr.ap-south-1.amazonaws.com/test-mlops/yt-chrome-plugin:latest
 
 
     # Zip the required files
@@ -178,7 +178,7 @@ jobs:
     - name: Upload ZIP to S3
       if: success()
       run: |
-        aws s3 cp deployment.zip s3://prashant-mlops-bucket/deployment.zip
+        aws s3 cp deployment.zip s3://deployment-zips-bucket/deployment.zip
 
     # Deploy to AWS CodeDeploy using the uploaded ZIP file
     - name: Deploy to AWS CodeDeploy
@@ -187,9 +187,9 @@ jobs:
         aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws deploy create-deployment \
-          --application-name YTChromePlugin \
+          --application-name yt-chrome-plugin-2 \
           --deployment-config-name CodeDeployDefault.AllAtOnce \
-          --deployment-group-name YTChromePluginDeploymentGroup \
-          --s3-location bucket=prashant-mlops-bucket,key=deployment.zip,bundleType=zip \
+          --deployment-group-name yt-chrome-plugin-2-deployment-group \
+          --s3-location bucket=deployment-zips-bucket,key=deployment.zip,bundleType=zip \
           --file-exists-behavior OVERWRITE \
           --region ${{ env.AWS_REGION }}
